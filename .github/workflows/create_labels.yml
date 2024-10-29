@@ -1,9 +1,9 @@
 name: Create Labels
 
 on:
-  push:
+  push:                    # 새로운 레포지토리에 템플릿이 복제되고 푸시되면 실행
     paths:
-      - '.github/labels.json'  # labels.json 파일이 변경될 때만 실행
+      - '.github/labels.json'   # labels.json 파일이 있는 경우에만 실행하도록 설정
 
 jobs:
   create_labels:
@@ -28,7 +28,7 @@ jobs:
           import requests
           import json
 
-          # labels.json 경로를 .github/labels.json로 수정
+          # labels.json 파일을 읽어서 레이블 생성
           with open('.github/labels.json', 'r', encoding='utf-8') as file:
               labels = json.load(file)
 
