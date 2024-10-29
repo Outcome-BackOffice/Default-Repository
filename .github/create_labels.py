@@ -1,8 +1,10 @@
-# create_labels.py
-
 import json
+import os
 
 import requests
+
+# 환경 변수에서 GitHub 토큰 불러오기
+GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]
 
 # labels.json 파일을 읽어서 레이블 생성
 with open(".github/labels.json", "r", encoding="utf-8") as file:
