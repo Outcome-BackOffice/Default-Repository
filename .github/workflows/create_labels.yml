@@ -28,7 +28,7 @@ jobs:
           import requests
           import json
 
-          with open('labels.json', 'r', encoding='utf-8') as file:
+          with open('.github/labels.json', 'r', encoding='utf-8') as file:
               labels = json.load(file)
 
           repo = '${{ github.repository }}'
