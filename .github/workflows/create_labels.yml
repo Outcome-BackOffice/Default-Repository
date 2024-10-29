@@ -1,0 +1,48 @@
+name: Create Labels
+
+on:
+  push:
+    paths:
+      - '.github/labels.json'  # labels.json 파일이 변경될 때만 실행
+
+jobs:
+  create_labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install requests library
+        run: |
+          python -m pip install requests
+
+      - name: Create Labels
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          import requests
+          import json
+
+          with open('labels.json', 'r', encoding='utf-8') as file:
+              labels = json.load(file)
+
+          repo = '${{ github.repository }}'
+          url = f'https://api.github.com/repos/{repo}/labels'
+          headers = {
+              'Authorization': f'token {GITHUB_TOKEN}',
+              'Accept': 'application/vnd.github.v3+json'
+          }
+
+          for label in labels:
+              response = requests.post(url, headers=headers, json=label)
+              if response.status_code == 201:
+                  print(f"Label '{label['name']}' created successfully.")
+              elif response.status_code == 422:
+                  print(f"Label '{label['name']}' already exists.")
+              else:
+                  print(f"Failed to create label '{label['name']}': {response.content}")

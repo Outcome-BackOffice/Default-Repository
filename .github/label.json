@@ -1,0 +1,32 @@
+[
+    {
+        "name": "change",
+        "color": "C2E0C6",
+        "description": "기능 변경"
+    },
+    {
+        "name": "FE",
+        "color": "E4C1F9",
+        "description": "Front-end Task"
+    },
+    {
+        "name": "feature",
+        "color": "BFD4F2",
+        "description": "새로운 기능 추가"
+    },
+    {
+        "name": "fix",
+        "color": "E99695",
+        "description": "버그 수정"
+    },
+    {
+        "name": "refactor",
+        "color": "D3DAE8",
+        "description": "리팩터링"
+    },
+    {
+        "name": "removed",
+        "color": "D4C5F9",
+        "description": "기능 삭제"
+    }
+]
