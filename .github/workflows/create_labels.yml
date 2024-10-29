@@ -25,4 +25,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python create_labels.py
+          python .github/create_labels.py  # Python 파일 경로 수정
