@@ -28,6 +28,7 @@ jobs:
           import requests
           import json
 
+          # labels.json 경로를 .github/labels.json로 수정
           with open('.github/labels.json', 'r', encoding='utf-8') as file:
               labels = json.load(file)
 
